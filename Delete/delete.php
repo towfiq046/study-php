@@ -1,3 +1,8 @@
+<?php include "db.php";?>
+<?php include "functions.php";?>
+<?php 
+    delete();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +16,7 @@
 
 <body>
     <div class="container">
-        <form action="login.php" method="POST">
+        <form action="delete.php" method="POST">
             <div class="form-group">
                 <label for="email">Email address</label>
                 <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
@@ -25,10 +30,14 @@
                 <label for="password">Password</label>
                 <input type="password" class="form-control" name="password" placeholder="Password">
             </div>
-            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            <select class="form-group" name="id">
+                <?php
+                    print_r(show_all_data()) ;
+                ?>
+            </select>
+            <button type="submit" name="submit" class="btn btn-primary">Delete</button>
         </form>
     </div>
-
 </body>
 
 </html>
