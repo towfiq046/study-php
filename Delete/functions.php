@@ -9,7 +9,7 @@
             die("Query failed" . mysqli_error($conn));
         }
         $data = [];
-        while ($row = mysqli_fetch_assoc($result)) {
+        while($row = mysqli_fetch_assoc($result)) {
             array_push($data, $row);
         }
         return $data;
@@ -26,7 +26,7 @@
             $delete = mysqli_query($conn, $query);
     
             if(!$delete) {
-                die("Update was unsuccessful!" . mysqli_error($conn));
+                die("Delete failed!" . mysqli_error($conn));
             }
         }
     }
