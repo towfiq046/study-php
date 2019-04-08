@@ -1,21 +1,16 @@
-<?php 
-    $conn = mysqli_connect('localhost', 'root', '', 'login_app');
-
-    if($conn) {
-        echo('Connection successful!<br>');
-    }
-    else {
-        die('Connection unsuccessful!<br>');
-    }
-
-    $query = "SELECT * FROM users";
-    $result = mysqli_query($conn, $query);
-
-    if(!$result){
-        die("Query failed" . mysqli_error($conn));
+<?php include "db.php"; ?>
+<?php include "functions.php"; ?>
+<?php
+    $id_data = array(id_wise_query());
+    $email_s = '';
+    $username_s = '';
+    foreach($id_data as $value) {
+        $email = $value[0]['email'];
+        $email_s .= 'value=' . $email;
+        $username = $value[0]['username'];
+        $username_s .= 'value=' . $username;
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,13 +24,27 @@
 
 <body>
     <div class="container">
-        <?php 
-            while($row = mysqli_fetch_assoc($result)) {
-                //print_r($row);
-                var_dump($row);
-                //echo json_encode($row, JSON_PRETTY_PRINT);
-            }
-        ?>
+        <h1 style="text-align: center">READ</h1>
+        <form action="read.php" method="POST">
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="text" class="form-control" name="email" placeholder="Email" <?php echo $email_s; ?>>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" name="username" placeholder="Username" <?php echo $username_s; ?>>
+            </div>
+            <select class="form-group" name="id">
+                <?php
+                    $data = show_all_data();
+                    foreach($data as $d) {
+                        $id = $d['id'];
+                        echo "<option name='id' value=$id>$id</option>";  
+                    }
+                ?>
+            </select>
+            <button type="submit" name="submit" class="btn btn-primary">Show</button>
+        </form>
     </div>
 </body>
 
