@@ -6,11 +6,8 @@
         $password = $_POST['password'];
         $conn = mysqli_connect('localhost', 'root', '', 'login_app');
         
-        if($conn) {
-            echo('Connection successful!<br>');
-        }
-        else {
-            die('Connection unsuccessful!<br>');
+        if(!$conn) {
+            die('Connection failed!');
         }
 
         $query = "INSERT INTO users(email, username, password)";
