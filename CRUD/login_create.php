@@ -1,5 +1,7 @@
 <?php include "functions.php" ?>
-<?php create() ?>
+<?php 
+    create();
+?>
 
 <?php include "include/header.php" ?>
 
