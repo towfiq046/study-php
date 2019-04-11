@@ -1,6 +1,8 @@
 <div class="col-md-4">
     <?php
+    if(isset($_POST["search"])) {
     echo $_POST["search"];
+    }
     ?>
 
     <!-- Blog Search Well -->
