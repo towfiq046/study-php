@@ -1,14 +1,9 @@
 <div class="col-md-4">
-    <?php
-    if(isset($_POST["search"])) {
-    echo $_POST["search"];
-    }
-    ?>
 
     <!-- Blog Search Well -->
     <div class="well">
         <h4>Blog Search</h4>
-        <form action="" method="POST">
+        <form action="index.php" method="POST">
             <div class="input-group">
                 <input name="search" type="text" class="form-control">
                 <span class="input-group-btn">
