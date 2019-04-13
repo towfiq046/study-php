@@ -19,18 +19,10 @@
 
                     while($row = mysqli_fetch_assoc($all_categories)) {
                         $cat_title = $row["cat_title"];
-                        echo "<li><a href='#'>{$cat_title}</a><li>";
+                        echo "<li><a href='#'>$cat_title</a><li>";
                     }
                     ?>
-                    <!-- <li>
-                        <a href="#">About</a>
-                    </li>
-                    <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li> -->
+                    <li><a href="admin">Admin</a><li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
