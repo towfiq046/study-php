@@ -1,11 +1,16 @@
-<?php include "includes/header.php"; ?>
+<?php include "includes/admin_header.php"; ?>
+
+<?php
+$category_q = "SELECT * FROM categories";
+$all_categories = mysqli_query($conn, $category_q) ;
+?>
 
 <body>
 
     <div id="wrapper">
 
         <!-- Navigation -->
-        <?php include "includes/nav.php"; ?>
+        <?php include "includes/admin_nav.php"; ?>
 
         <div id="page-wrapper">
 
@@ -27,6 +32,29 @@
                             <button name="submit" type="submit" class="btn btn-primary">Add Category</button>
                         </form>
                     </div>
+                    <div class="col-xs-6">
+                        <table class="table table-boarded table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Category</th>
+                                </tr>
+                            </thead>
+                            <tbody>                              
+                                <?php
+                                while($row = mysqli_fetch_assoc($all_categories)) {
+                                    $cat_id = $row["cat_id"];
+                                    $cat_title = $row["cat_title"];
+
+                                    echo "<tr>";
+                                    echo "<td>$cat_id</td>";
+                                    echo "<td>$cat_title</td>";
+                                    echo "</tr>";                                 
+                                }                               
+                                ?>
+                            </tbody>
+                        </table>
+                    </div> 
                 </div>
                 <!-- /.row -->
 
